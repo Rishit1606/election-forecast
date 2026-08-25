@@ -1,0 +1,52 @@
+"""
+Electoral vote allocations.
+
+Two apportionments are relevant to this project:
+  - EV_2010_CENSUS: used for the 2012, 2016, and 2020 elections
+  - EV_2020_CENSUS: used for the 2024 and 2028 elections
+
+Both dictionaries sum to 538.
+"""
+
+EV_2010_CENSUS = {
+    "Alabama": 9, "Alaska": 3, "Arizona": 11, "Arkansas": 6, "California": 55,
+    "Colorado": 9, "Connecticut": 7, "Delaware": 3, "District of Columbia": 3,
+    "Florida": 29, "Georgia": 16, "Hawaii": 4, "Idaho": 4, "Illinois": 20,
+    "Indiana": 11, "Iowa": 6, "Kansas": 6, "Kentucky": 8, "Louisiana": 8,
+    "Maine": 4, "Maryland": 10, "Massachusetts": 11, "Michigan": 16,
+    "Minnesota": 10, "Mississippi": 6, "Missouri": 10, "Montana": 3,
+    "Nebraska": 5, "Nevada": 6, "New Hampshire": 4, "New Jersey": 14,
+    "New Mexico": 5, "New York": 29, "North Carolina": 15, "North Dakota": 3,
+    "Ohio": 18, "Oklahoma": 7, "Oregon": 7, "Pennsylvania": 20,
+    "Rhode Island": 4, "South Carolina": 9, "South Dakota": 3, "Tennessee": 11,
+    "Texas": 38, "Utah": 6, "Vermont": 3, "Virginia": 13, "Washington": 12,
+    "West Virginia": 5, "Wisconsin": 10, "Wyoming": 3,
+}
+
+
+EV_2020_CENSUS = {
+    "Alabama": 9, "Alaska": 3, "Arizona": 11, "Arkansas": 6, "California": 54,
+    "Colorado": 10, "Connecticut": 7, "Delaware": 3, "District of Columbia": 3,
+    "Florida": 30, "Georgia": 16, "Hawaii": 4, "Idaho": 4, "Illinois": 19,
+    "Indiana": 11, "Iowa": 6, "Kansas": 6, "Kentucky": 8, "Louisiana": 8,
+    "Maine": 4, "Maryland": 10, "Massachusetts": 11, "Michigan": 15,
+    "Minnesota": 10, "Mississippi": 6, "Missouri": 10, "Montana": 4,
+    "Nebraska": 5, "Nevada": 6, "New Hampshire": 4, "New Jersey": 14,
+    "New Mexico": 5, "New York": 28, "North Carolina": 16, "North Dakota": 3,
+    "Ohio": 17, "Oklahoma": 7, "Oregon": 8, "Pennsylvania": 19,
+    "Rhode Island": 4, "South Carolina": 9, "South Dakota": 3, "Tennessee": 11,
+    "Texas": 40, "Utah": 6, "Vermont": 3, "Virginia": 13, "Washington": 12,
+    "West Virginia": 4, "Wisconsin": 10, "Wyoming": 3,
+}
+
+
+
+assert sum(EV_2010_CENSUS.values()) == 538, sum(EV_2010_CENSUS.values())
+assert sum(EV_2020_CENSUS.values()) == 538, sum(EV_2020_CENSUS.values())
+
+
+def get_ev_map(cycle: int) -> dict:
+    """Return the correct electoral vote dictionary for a given election cycle."""
+    if cycle >= 2024:
+        return EV_2020_CENSUS
+    return EV_2010_CENSUS
